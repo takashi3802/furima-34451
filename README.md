@@ -54,7 +54,7 @@ has_one    :address
 |Column             |Type       |Options                        |
 |-------------------|----------|--------------------------------|
 | postal_code       | string   | null: false                    |
-| delivery_ area_id | string   | null: false                    |
+| delivery_area_id | string   | null: false                    |
 | municipalities    | string   | null: false                    |
 | house_number      | string   | null: false                    |
 | building          | string   |                                |
