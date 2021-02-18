@@ -19,51 +19,46 @@ has_many :purchases
 
 ## itemsテーブル
 
-|Column          |Type       |Options                        |
-|----------------|-----------|-------------------------------|
-| name           | string    | null: false                   |
-| descriptions   | text      | null: false                   |
-| category       | string    | null: false                   |
-| status         | string    | null: false                   |
-| delivery_fee   | string    | null: false                   |
-| delivery_ area | string    | null: false                   |
-| delivery_days  | string    | null: false                   |
-| price          | integer   | null: false                   |
-| fee            | integer   | null: false                   |
-| profit         | integer   | null: false                   |
-| user_id        | reference | null: false, foreign_key: true|
+|Column            |Type       |Options                        |
+|------------------|-----------|-------------------------------|
+| name             | string    | null: false                   |
+| descriptions     | text      | null: false                   |
+| category         | string    | null: false                   |
+| status           | string    | null: false                   |
+| delivery_fee_id  | integer   | null: false                   |
+| delivery_area_id | integer   | null: false                   |
+| delivery_day_id  | integer   | null: false                   |
+| price            | integer   | null: false                   |
+| user             | reference | null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
 has_one :purchase
 
 
-## purchaseテーブル
+## purchasesテーブル
 
-|Column            |Type       |Options                        |
-|------------------|-----------|-------------------------------|
-| credit_number    | integer   | null: false                   |
-| expiration_month | integer   | null: false                   |
-| expiration_year  | integer   | null: false                   |
-| security_code    | integer   | null: false                   |
-| user_id          | reference | null: false, foreign_key: true|
+|Column |Type       |Options                        |
+|-------|-----------|-------------------------------|
+| item  | reference | null: false, foreign_key: true|
+| user  | reference | null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
-has_one    :item
+belongs_to :item
 has_one    :address
 
 
 ## addressesテーブル
 
-|Column          |Type     |Options      |
-|----------------|---------|-------------|
-| postal_code    | integer | null: false |
-| prefectures    | string  | null: false |
-| municipalities | string  | null: false |
-| house_number   | string  | null: false |
-| building       | string  |             |
-| phone          | integer | null: false |
+|Column             |Type    |Options      |
+|-------------------|--------|-------------|
+| postal_code       | string | null: false |
+| delivery_ area_id | string | null: false |
+| municipalities    | string | null: false |
+| house_number      | string | null: false |
+| building          | string |             |
+| phone             | string | null: false |
 
 ### Association
-has_one :purchases
+belongs_to :purchase
