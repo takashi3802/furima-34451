@@ -1,29 +1,26 @@
 ## usersテーブル
 
-|Column           |Type     |Options      |
-|-----------------|---------|-------------|
-| nickname        | string  | null: false |
-| email           | string  | null: false |
-| password        | string  | null: false |
-| first_name      | string  | null: false |
-| last_name       | string  | null: false |
-| first_name_kana | string  | null: false |
-| last_name_kana  | string  | null: false |
-| birth_year      | integer | null: false |
-| birth_month     | integer | null: false |
-| birth_day       | integer | null: false |
+|Column              |Type     |Options       |
+|--------------------|--------|--------------|
+| nickname           | string | null: false  |
+| email              | string | unique: true |
+| encrypted_password | string | null: false  |
+| first_name         | string | null: false  |
+| last_name          | string | null: false  |
+| first_name_kana    | string | null: false  |
+| last_name_kana     | string | null: false  |
+| birth_day          | date   | null: false  |
+
 
 ### Association
 has_many :items
 has_many :purchases
-has_one  :address
 
 
 ## itemsテーブル
 
 |Column          |Type       |Options                        |
 |----------------|-----------|-------------------------------|
-| image          |           | null: false                   |
 | name           | string    | null: false                   |
 | descriptions   | text      | null: false                   |
 | category       | string    | null: false                   |
@@ -69,5 +66,4 @@ has_one    :address
 | phone          | integer | null: false |
 
 ### Association
-has_one :user
 has_one :purchases
