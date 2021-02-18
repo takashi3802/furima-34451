@@ -1,15 +1,15 @@
 ## usersテーブル
 
-|Column              |Type     |Options       |
-|--------------------|--------|--------------|
-| nickname           | string | null: false  |
-| email              | string | unique: true |
-| encrypted_password | string | null: false  |
-| first_name         | string | null: false  |
-| last_name          | string | null: false  |
-| first_name_kana    | string | null: false  |
-| last_name_kana     | string | null: false  |
-| birth_day          | date   | null: false  |
+|Column              |Type     |Options                  |
+|--------------------|--------|--------------------------|
+| nickname           | string | null: false              |
+| email              | string | null: false,unique: true |
+| encrypted_password | string | null: false              |
+| first_name         | string | null: false              |
+| last_name          | string | null: false              |
+| first_name_kana    | string | null: false              |
+| last_name_kana     | string | null: false              |
+| birth_day          | date   | null: false              |
 
 
 ### Association
@@ -19,17 +19,17 @@ has_many :purchases
 
 ## itemsテーブル
 
-|Column            |Type       |Options                        |
-|------------------|-----------|-------------------------------|
-| name             | string    | null: false                   |
-| descriptions     | text      | null: false                   |
-| category_id      | integer   | null: false                   |
-| status_id        | integer   | null: false                   |
-| delivery_fee_id  | integer   | null: false                   |
-| delivery_area_id | integer   | null: false                   |
-| delivery_day_id  | integer   | null: false                   |
-| price            | integer   | null: false                   |
-| user             | reference | null: false, foreign_key: true|
+|Column            |Type       |Options                         |
+|------------------|-----------|--------------------------------|
+| name             | string    | null: false                    |
+| descriptions     | text      | null: false                    |
+| category_id      | integer   | null: false                    |
+| status_id        | integer   | null: false                    |
+| delivery_fee_id  | integer   | null: false                    |
+| delivery_area_id | integer   | null: false                    |
+| delivery_day_id  | integer   | null: false                    |
+| price            | integer   | null: false                    |
+| user             | reference | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
