@@ -1,24 +1,73 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column           |Type     |Options      |
+|-----------------|---------|-------------|
+| nickname        | string  | null: false |
+| email           | string  | null: false |
+| password        | string  | null: false |
+| first_name      | string  | null: false |
+| last_name       | string  | null: false |
+| first_name_kana | string  | null: false |
+| last_name_kana  | string  | null: false |
+| birth_year      | integer | null: false |
+| birth_month     | integer | null: false |
+| birth_day       | integer | null: false |
 
-Things you may want to cover:
+### Association
+has_many :items
+has_many :purchases
+has_one  :address
 
-* Ruby version
 
-* System dependencies
+## itemsテーブル
 
-* Configuration
+|Column          |Type       |Options                        |
+|----------------|-----------|-------------------------------|
+| image          |           | null: false                   |
+| name           | string    | null: false                   |
+| descriptions   | text      | null: false                   |
+| category       | string    | null: false                   |
+| status         | string    | null: false                   |
+| delivery_fee   | string    | null: false                   |
+| delivery_ area | string    | null: false                   |
+| delivery_days  | string    | null: false                   |
+| price          | integer   | null: false                   |
+| fee            | integer   | null: false                   |
+| profit         | integer   | null: false                   |
+| user_id        | reference | null: false, foreign_key: true|
 
-* Database creation
+### Association
+belongs_to :user
+has_one :purchase
 
-* Database initialization
 
-* How to run the test suite
+## purchaseテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column            |Type       |Options                        |
+|------------------|-----------|-------------------------------|
+| credit_number    | integer   | null: false                   |
+| expiration_month | integer   | null: false                   |
+| expiration_year  | integer   | null: false                   |
+| security_code    | integer   | null: false                   |
+| user_id          | reference | null: false, foreign_key: true|
 
-* Deployment instructions
+### Association
+belongs_to :user
+has_one    :item
+has_one    :address
 
-* ...
+
+## addressesテーブル
+
+|Column          |Type     |Options      |
+|----------------|---------|-------------|
+| postal_code    | integer | null: false |
+| prefectures    | string  | null: false |
+| municipalities | string  | null: false |
+| house_number   | string  | null: false |
+| building       | string  |             |
+| phone          | integer | null: false |
+
+### Association
+has_one :user
+has_one :purchases
