@@ -23,8 +23,8 @@ has_many :purchases
 |------------------|-----------|-------------------------------|
 | name             | string    | null: false                   |
 | descriptions     | text      | null: false                   |
-| category         | string    | null: false                   |
-| status           | string    | null: false                   |
+| category_id      | integer   | null: false                   |
+| status_id        | integer   | null: false                   |
 | delivery_fee_id  | integer   | null: false                   |
 | delivery_area_id | integer   | null: false                   |
 | delivery_day_id  | integer   | null: false                   |
@@ -38,10 +38,10 @@ has_one :purchase
 
 ## purchasesテーブル
 
-|Column |Type       |Options                        |
-|-------|-----------|-------------------------------|
-| item  | reference | null: false, foreign_key: true|
-| user  | reference | null: false, foreign_key: true|
+|Column |Type       |Options                         |
+|-------|-----------|--------------------------------|
+| item  | reference | null: false, foreign_key: true |
+| user  | reference | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
@@ -51,14 +51,15 @@ has_one    :address
 
 ## addressesテーブル
 
-|Column             |Type    |Options      |
-|-------------------|--------|-------------|
-| postal_code       | string | null: false |
-| delivery_ area_id | string | null: false |
-| municipalities    | string | null: false |
-| house_number      | string | null: false |
-| building          | string |             |
-| phone             | string | null: false |
+|Column             |Type       |Options                        |
+|-------------------|----------|--------------------------------|
+| postal_code       | string   | null: false                    |
+| delivery_ area_id | string   | null: false                    |
+| municipalities    | string   | null: false                    |
+| house_number      | string   | null: false                    |
+| building          | string   |                                |
+| phone             | string   | null: false                    |
+| purchase          | reference| null: false, foreign_key: true |
 
 ### Association
 belongs_to :purchase
