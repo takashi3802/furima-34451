@@ -138,7 +138,15 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
+      end
+
+      it 'emailに@がないと登録できないこと'do
+        @user.email = 'test.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end  
+
+
    end
  end
 end
