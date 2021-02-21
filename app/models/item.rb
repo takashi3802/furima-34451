@@ -7,6 +7,7 @@ class Item < ApplicationRecord
     validates :name
     validates :descriptions
     validates :price
+    validates :image
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
