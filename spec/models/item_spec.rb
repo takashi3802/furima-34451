@@ -85,6 +85,36 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank", "Price  Half-width number", "Price Price Out of setting range")
       end
 
+      it 'category_idが -- では登録できないこと' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
+
+      it 'status_idが -- では登録できないこと' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
+      end
+
+      it 'delivery_fee_idが -- では登録できないこと' do
+        @item.delivery_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
+      end
+
+      it 'delivery_area_idが -- では登録できないこと' do
+        @item.delivery_area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery area must be other than 1")
+      end
+
+      it 'delivery_day_idが -- では登録できないこと' do
+        @item.delivery_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery day must be other than 1")
+      end
+
       it'priceは、¥300未満なら保存できないこと'do
         @item.price = 299
         @item.valid?
