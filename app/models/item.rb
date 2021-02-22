@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
-  validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: ' Half-width number' }
+  validates :price, presence: true, format: { with: /\A[0-9][\d]+\z/, message: ' Half-width number' }
 
   with_options presence: true do
     validates :name
