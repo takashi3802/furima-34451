@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   has_one_attached :image
 
   belongs_to :user
@@ -26,4 +27,3 @@ class Item < ApplicationRecord
     validates :delivery_day_id
   end
 end
-
