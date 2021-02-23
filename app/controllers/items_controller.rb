@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :move_to_index, except: [:edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
   before_action :set_item, only:[:show, :edit, :update]
 
   def index
@@ -24,8 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index 
-
     # if @item == nil
     # redirect_to action: :index
     # end
