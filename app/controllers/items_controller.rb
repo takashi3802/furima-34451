@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :move_to_index, except: [:index, :show ]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -25,13 +25,11 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    unless user_signed_in? && current_user.id == @item.user.id 
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in? && current_user.id == @item.user.id
 
-    #if @item == nil
-     # redirect_to action: :index
-    #end
+    # if @item == nil
+    # redirect_to action: :index
+    # end
   end
 
   def update
@@ -51,9 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? 
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
-
 end
