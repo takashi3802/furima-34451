@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index unless current_user.id == @item.user.id
     # 以下は商品購入機能実装時に使います
     # if @item == nil
     # redirect_to action: :index
@@ -47,6 +46,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
+    @item = Item.find(params[:id])
+    redirect_to action: :index unless current_user.id == @item.user.id
   end
 
   def set_item
