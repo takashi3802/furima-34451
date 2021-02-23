@@ -29,9 +29,9 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
 
-    if @item == nil
-      redirect_to action: :index
-    end
+    #if @item == nil
+     # redirect_to action: :index
+    #end
   end
 
   def update
