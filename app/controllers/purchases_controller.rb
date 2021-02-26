@@ -1,12 +1,14 @@
 class PurchasesController < ApplicationController
 
   def index
-   @purchase_address = PurchaseAddress.new(purchase_params)
+   @purchase_address = PurchaseAddress.new
   end
 
   def create
+    binding.pry
     @purchase_address = PurchaseAddress.new(purchase_params)
-    if @purchase_address.save
+    if @purchase_address.valid?
+       @purchase_address.save
       redirect_to root_path
     else
       render :index
@@ -16,6 +18,6 @@ class PurchasesController < ApplicationController
   private
 
   def  purchase_params
-   params.permit(:postal_code, :delivery_area_id, :municipalities, :house_number, :building, :phone, :item_id).merge(user_id: current_user.id)
+    params.require(:purchase_address).permit(:postal_code, :delivery_area_id, :municipalities, :house_number, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 end
