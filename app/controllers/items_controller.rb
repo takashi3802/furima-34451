@@ -24,9 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # if @item == nil
-    # redirect_to action: :index
-    # end
+    if @item.purchase != nil
+      redirect_to action: :index
+    end
   end
 
   def update
