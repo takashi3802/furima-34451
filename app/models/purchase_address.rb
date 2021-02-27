@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :delivery_area_id, :municipalities, :house_number, :building, :phone, :item_id, :user_id
+  attr_accessor :postal_code, :delivery_area_id, :municipalities, :house_number, :building, :phone, :item_id, :user_id, :price, :token
 
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Postal code Input correctly"}
