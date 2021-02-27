@@ -7,15 +7,12 @@ RSpec.describe Purchase, type: :model do
     end
 
     context '購入情報が保存できる場合' do
-
       it 'postal_code,delivery_area_id,municipalities,house_number,phone,price,tokenが正しく入力されていれば保存できること' do
         expect(@purchase_address).to be_valid
       end
-
     end
 
     context '購入情報が保存できない場合' do
-
       it 'postal_codeが空だと保存できないこと' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
@@ -25,7 +22,7 @@ RSpec.describe Purchase, type: :model do
       it 'delivery_area_idが空だと保存できないこと' do
         @purchase_address.delivery_area_id = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Delivery area Delivery area Select")
+        expect(@purchase_address.errors.full_messages).to include('Delivery area Delivery area Select')
       end
 
       it 'municipalitiesが空だと保存できないこと' do
@@ -61,16 +58,14 @@ RSpec.describe Purchase, type: :model do
       it 'postal_codeはハイフンがないと保存できないこと' do
         @purchase_address.postal_code = '1234567'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal code Postal code Input correctly")
+        expect(@purchase_address.errors.full_messages).to include('Postal code Postal code Input correctly')
       end
 
       it 'phoneは11桁以内でないと保存できないこと' do
         @purchase_address.phone = '123456789012'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone Phone number Input only number")
+        expect(@purchase_address.errors.full_messages).to include('Phone Phone number Input only number')
       end
-
     end
   end
 end
-  
