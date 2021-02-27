@@ -9,11 +9,11 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" if @item.image.attached? %>
       
-      <%# if @item.nil? %>
+      <% if @item.purchase != nil %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <%# end %>
+      <% end %>
       
     </div>
     <div class="item-price-box">
@@ -30,13 +30,10 @@
     <%= link_to "商品の編集", edit_item_path(@item),method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
-   <% elsif  @item != nil %>
+   <% elsif  @item.purchase == nil %>
     <%= link_to "購入画面に進む",  item_purchases_path(@item),class:"item-red-btn"%>
     <% end %>
   <% end %>
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
 
     <div class="item-explain-box">
       <span><%= @item.descriptions %></span>
