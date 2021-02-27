@@ -8,7 +8,7 @@ RSpec.describe Purchase, type: :model do
 
     context '購入情報が保存できる場合' do
 
-      it 'postal_code,delivery_area_id,municipalities,house_number,phoneが正しく入力されていれば保存できること' do
+      it 'postal_code,delivery_area_id,municipalities,house_number,phone,price,tokenが正しく入力されていれば保存できること' do
         expect(@purchase_address).to be_valid
       end
 
@@ -44,6 +44,18 @@ RSpec.describe Purchase, type: :model do
         @purchase_address.phone = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone can't be blank")
+      end
+
+      it 'priceが空だと保存できないこと' do
+        @purchase_address.price = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Price can't be blank")
+      end
+
+      it 'tokenが空だと保存できないこと' do
+        @purchase_address.token = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
 
       it 'postal_codeはハイフンがないと保存できないこと' do
