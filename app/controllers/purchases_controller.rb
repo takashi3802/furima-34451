@@ -2,6 +2,8 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :index]
   before_action :move_to_index, only: [:index, :create]
   
+ 
+  
   def index
     @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
