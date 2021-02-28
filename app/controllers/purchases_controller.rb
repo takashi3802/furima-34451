@@ -5,7 +5,6 @@ class PurchasesController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
-    redirect_to root_path unless @item.purchase.nil?
   end
 
   def create
@@ -39,6 +38,8 @@ class PurchasesController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == @item.user.id
+     if current_user.id == @item.user.id || @item.purchase != nil 
+      redirect_to root_path
+     end
   end
 end
