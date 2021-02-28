@@ -22,7 +22,7 @@ RSpec.describe Purchase, type: :model do
       it 'delivery_area_idが空だと保存できないこと' do
         @purchase_address.delivery_area_id = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Delivery area Delivery area Select')
+        expect(@purchase_address.errors.full_messages).to include("Delivery area is not a number")
       end
 
       it 'municipalitiesが空だと保存できないこと' do
@@ -65,6 +65,12 @@ RSpec.describe Purchase, type: :model do
         @purchase_address.phone = '123456789012'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone Phone number Input only number')
+      end
+
+      it 'delivery_area_idが -- では登録できないこと' do
+        @purchase_address.delivery_area_id = 1
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Delivery area must be other than 1")
       end
     end
   end

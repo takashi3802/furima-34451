@@ -7,8 +7,8 @@ class PurchaseAddress
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Postal code Input correctly' }
     validates :phone, format: { with: /\A[0-9]{11}\z/, message: 'Phone number Input only number' }
     validates :municipalities, :house_number, :user_id, :item_id, :price, :token
+    validates :delivery_area_id, numericality: { other_than: 1}
   end
-  validates :delivery_area_id, numericality: { other_than: 0, message: 'Delivery area Select' }
 
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
