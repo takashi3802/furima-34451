@@ -6,7 +6,6 @@ FactoryBot.define do
     house_number { '1-1' }
     building { '福岡ハイツ' }
     phone { '00000000000' }
-    price { 3000 }
     token { 'sk_test_000000000000000000000000' }
   end
 end
