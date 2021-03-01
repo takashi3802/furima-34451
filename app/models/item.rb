@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :image
 
+  has_one :purchase
   belongs_to :user
 
   validates :price, presence: true, format: { with: /\A[0-9]\d+\z/, message: ' Half-width number' },

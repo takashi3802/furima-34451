@@ -24,10 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # 以下は商品購入機能実装時に使います
-    # if @item == nil
-    # redirect_to action: :index
-    # end
+    redirect_to action: :index unless @item.purchase.nil?
   end
 
   def update
