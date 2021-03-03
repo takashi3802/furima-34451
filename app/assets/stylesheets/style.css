@@ -23,7 +23,7 @@
   padding: 16px 8px;
 }
 
-.user__btn:hover{
-  color: #fff;
-  background: #999;
+.user__btn{
+  color: gray;
+  background: skyblue;
 }
