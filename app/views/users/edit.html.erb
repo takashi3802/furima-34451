@@ -1,6 +1,6 @@
 <%= render "shared/second-header"%>
 
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: edit_user_path, class: 'registration-main', method: :put, local: true do |f| %>
 
 <div class='form-wrap'>
   <div class='form-header'>
@@ -9,7 +9,7 @@
     </h1>
   </div>
   
-  <%= render 'shared/error_messages', model: f.object %>
+  <%#<%= render 'shared/error_messages', model: f.object %>
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -86,20 +86,8 @@
                     date_separator: '%s'),
                   "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
     </div>
-    <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
-  </div>
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
   <div class='register-btn'>
-    <%= f.submit "新規登録" ,class:"register-red-btn" %>
+    <%= f.submit "更新" ,class:"register-red-btn" %>
   </div>
-  <p class='register-info'>本人情報の登録について</p>
 </div>
 <% end %>
-
-<%= render "shared/second-footer"%>

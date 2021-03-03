@@ -1,0 +1,38 @@
+<%= render "shared/second-header"%>
+
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%= @user.nickname + "さんの情報"%>
+         <%= link_to "編集する", edit_user_path, class: :user__btn %>
+          <%= link_to "削除する", user_path, method: :delete, class: :user__btn %>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">ニックネーム</th>
+            <td class="table__col2"><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">Eメール</th>
+            <td class="table__col2"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">名前</th>
+            <td class="table__col2"><%= @user.last_name + @user.first_name %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">名前（カナ）</th>
+            <td class="table__col2"><%= @user.last_name_kana + @user.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">生年月日</th>
+            <td class="table__col2"><%= @user.birth_day %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= render "shared/second-header"%>
+    </div>
+  </div>
+</div>
