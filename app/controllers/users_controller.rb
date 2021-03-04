@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-  end
+
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+    card = Card.find_by(user_id: current_user.id) 
+
+    redirect_to new_card_path and return unless card.present?
+
+    customer = Payjp::Customer.retrieve(card.customer_token) 
+    @card = customer.cards.first
+ end
 
   def update
     if current_user.update(user_params)
@@ -20,6 +28,7 @@ class UsersController < ApplicationController
 
   def destroy
      user = User.find(params[:id])
+     binding.pry
      user.destroy
      redirect_to root_path
   end

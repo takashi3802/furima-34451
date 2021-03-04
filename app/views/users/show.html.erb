@@ -30,8 +30,17 @@
             <th class="table__col1">生年月日</th>
             <td class="table__col2"><%= @user.birth_day %></td>
           </tr>
+          <tr>
+          
+            <th class="table__col1">クレジットカード情報</th>
+            <td class="table__col2"> カード番号<%= "**** **** **** " + @card[:last4]%></td>
+            <th class="table__col1">有効期限</th>
+            <td class="table__col2"><%= @card[:exp_month]%>月</td>
+            <td class="table__col2"><%= @card[:exp_year]%>年</td>
+          </tr>
         </tbody>
       </table>
+      <%= link_to "クレジット情報を削除する", card_path, method: :delete, class: :user__btn %>
       <%= render "shared/second-header"%>
     </div>
   </div>
