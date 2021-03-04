@@ -40,7 +40,9 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "クレジット情報を削除する", card_path, method: :delete, class: :user__btn %>
+      <% if @user.card == nil %>  
+        <%= link_to "クレジット情報を登録する", new_card_path, class: :user__btn %>
+      <% end %>
       <%= render "shared/second-header"%>
     </div>
   </div>
