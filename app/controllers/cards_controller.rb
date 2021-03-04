@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
     def new
     end
@@ -22,5 +23,5 @@ class CardsController < ApplicationController
         render :new 
       end
    
-   end
+    end
 end
