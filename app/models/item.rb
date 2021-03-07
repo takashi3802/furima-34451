@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_area
   belongs_to :delivery_day
 
-  with_options numericality: { other_than: 1, message: 'を選んでください'} do
+  with_options numericality: { other_than: 1, message: 'を選んでください' } do
     validates :category_id
     validates :status_id
     validates :delivery_fee_id

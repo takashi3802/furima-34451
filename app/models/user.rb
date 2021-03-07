@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :card, dependent: :destroy
 
-  has_many :items , dependent: :destroy
+  has_many :items, dependent: :destroy
   has_many :purchases, dependent: :destroy
 
   with_options presence: true do
