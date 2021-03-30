@@ -9,7 +9,7 @@ local:
 amazon:
  service: S3
  region: ap-northeast-1
- bucket: furima-34451
+ bucket: takashi-6424
  access_key_id: <%= ENV['AKIA5HW3S6ORIXYYCGMQ'] %>
  secret_access_key:  <%= ENV['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'] %>
 
